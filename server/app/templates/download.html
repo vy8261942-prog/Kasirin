@@ -9,49 +9,21 @@
   </div>
 
   <div class="os-grid" role="group" aria-label="Pilih sistem operasi">
-    <button class="os-option" type="button" data-os="windows" aria-pressed="false">
-      <span class="os-name">Windows</span>
-      <span class="os-detail">Windows 11 dan Windows 10</span>
-      <span class="os-status available">Installer tersedia</span>
+    {% for platform in platforms %}
+    <button class="os-option" type="button" data-os="{{ platform.id }}" data-label="{{ platform.label }}" data-available="{{ 'true' if platform.available else 'false' }}" data-download-url="{{ platform.download_url }}" data-filename="{{ platform.filename or '' }}" data-formats="{{ platform.formats }}" aria-pressed="false">
+      <span class="os-name">{{ platform.label }}</span>
+      <span class="os-detail">{{ platform.detail }}</span>
+      <span class="os-status{% if platform.available %} available{% endif %}">{% if platform.available %}Installer tersedia{% else %}Belum tersedia{% endif %}</span>
     </button>
-    <button class="os-option" type="button" data-os="macos" aria-pressed="false">
-      <span class="os-name">macOS</span>
-      <span class="os-detail">MacBook dan iMac</span>
-      <span class="os-status">Belum tersedia</span>
-    </button>
-    <button class="os-option" type="button" data-os="linux" aria-pressed="false">
-      <span class="os-name">Linux</span>
-      <span class="os-detail">Ubuntu, Debian, Fedora, Arch</span>
-      <span class="os-status">Belum tersedia</span>
-    </button>
-    <button class="os-option" type="button" data-os="android" aria-pressed="false">
-      <span class="os-name">Android</span>
-      <span class="os-detail">Ponsel dan tablet Android</span>
-      <span class="os-status">Belum tersedia</span>
-    </button>
-    <button class="os-option" type="button" data-os="ios" aria-pressed="false">
-      <span class="os-name">iOS / iPadOS</span>
-      <span class="os-detail">iPhone dan iPad</span>
-      <span class="os-status">Belum tersedia</span>
-    </button>
-    <button class="os-option" type="button" data-os="chromeos" aria-pressed="false">
-      <span class="os-name">ChromeOS</span>
-      <span class="os-detail">Chromebook</span>
-      <span class="os-status">Belum tersedia</span>
-    </button>
-    <button class="os-option" type="button" data-os="other" aria-pressed="false">
-      <span class="os-name">OS lainnya</span>
-      <span class="os-detail">BSD dan sistem operasi lain</span>
-      <span class="os-status">Belum tersedia</span>
-    </button>
+    {% endfor %}
   </div>
 
   <div class="download-result" aria-live="polite">
     <p class="selection-title" id="selection-title">Memeriksa sistem operasi...</p>
     <p class="selection-message" id="selection-message"></p>
-    <a class="btn download-action" id="download-action" href="/download/installer" hidden>Download installer Windows</a>
+    <a class="btn download-action" id="download-action" hidden></a>
   </div>
-  <p class="download-note">Installer saat ini hanya tersedia untuk Windows 10 dan Windows 11. Versi untuk sistem operasi lain belum tersedia.</p>
+  <p class="download-note">Unduhan hanya aktif untuk platform yang memiliki installer tersedia. Pastikan format paket sesuai dengan perangkat Anda.</p>
 </section>
 
 <style>
@@ -92,16 +64,6 @@
   const title = document.getElementById("selection-title");
   const message = document.getElementById("selection-message");
   const download = document.getElementById("download-action");
-  const labels = {
-    windows: "Windows",
-    macos: "macOS",
-    linux: "Linux",
-    android: "Android",
-    ios: "iOS / iPadOS",
-    chromeos: "ChromeOS",
-    other: "OS lainnya",
-  };
-
   function detectOperatingSystem() {
     const agent = navigator.userAgent;
     if (/CrOS/i.test(agent)) return "chromeos";
@@ -114,17 +76,23 @@
   }
 
   function selectOperatingSystem(os, detected = false) {
+    const selectedButton = Array.from(buttons).find((button) => button.dataset.os === os);
+    if (!selectedButton) return;
     buttons.forEach((button) => {
       button.setAttribute("aria-pressed", String(button.dataset.os === os));
     });
+    const label = selectedButton.dataset.label;
     title.textContent = detected
-      ? `Perangkat Anda terdeteksi menggunakan ${labels[os]}.`
-      : `${labels[os]} dipilih.`;
-    if (os === "windows") {
-      message.textContent = "Installer Kasirin tersedia untuk Windows 10 dan Windows 11.";
+      ? `Perangkat Anda terdeteksi menggunakan ${label}.`
+      : `${label} dipilih.`;
+    if (selectedButton.dataset.available === "true") {
+      message.textContent = `Installer ${label} tersedia dalam format ${selectedButton.dataset.formats}.`;
+      download.href = selectedButton.dataset.downloadUrl;
+      download.textContent = `Download ${label}`;
       download.hidden = false;
     } else {
-      message.textContent = `Installer Kasirin untuk ${labels[os]} belum tersedia. Pilih Windows 10 atau Windows 11 untuk mengunduh installer.`;
+      message.textContent = `Installer untuk ${label} belum tersedia.`;
+      download.removeAttribute("href");
       download.hidden = true;
     }
   }

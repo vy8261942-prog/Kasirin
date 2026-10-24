@@ -41,14 +41,54 @@
   <div class="section-header">
     <div>
       <h2 style="margin:0">Upload Installer</h2>
-      <span class="muted" style="font-size:13px">File yang diunggah akan dipakai sebagai installer untuk tombol Download di halaman utama.</span>
+      <span class="muted" style="font-size:13px">Pilih satu platform untuk setiap file. Upload baru menggantikan installer platform tersebut.</span>
     </div>
   </div>
-  <form action="/admin/upload-installer" method="post" enctype="multipart/form-data" style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
-    <input type="file" name="installer" accept=".exe,.msi,.zip" required>
+  <form id="installerUploadForm" action="/admin/upload-installer" method="post" enctype="multipart/form-data" style="display:flex;gap:12px;align-items:end;flex-wrap:wrap">
+    <label style="display:grid;gap:5px;font-size:13px;font-weight:600">
+      Platform OS
+      <select id="installerPlatform" name="platform" required>
+        {% for platform in installer_platforms %}
+        <option value="{{ platform.id }}" data-extensions="{{ platform.extensions|join(',') }}">{{ platform.label }} ({{ platform.extensions|join(', ') }})</option>
+        {% endfor %}
+      </select>
+    </label>
+    <label style="display:grid;gap:5px;font-size:13px;font-weight:600">
+      File installer
+      <input id="installerFile" type="file" name="installer" required>
+    </label>
     <button class="btn small" type="submit">Unggah Installer</button>
   </form>
+  <div style="margin-top:16px">
+    <h3 style="margin:0 0 8px;font-size:15px">Installer per platform</h3>
+    <div style="overflow-x:auto">
+      <table>
+        <thead><tr><th>Platform</th><th>Status</th><th>File</th><th>Format</th></tr></thead>
+        <tbody>
+          {% for installer in installers %}
+          <tr>
+            <td>{{ installer.label }}</td>
+            <td>{% if installer.available %}<span class="badge active">Tersedia</span>{% else %}<span class="badge none">Belum diunggah</span>{% endif %}</td>
+            <td>{{ installer.filename or "—" }}</td>
+            <td>{{ installer.formats }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
+<script>
+(() => {
+  const platformSelect = document.getElementById("installerPlatform");
+  const fileInput = document.getElementById("installerFile");
+  const updateAcceptedFormats = () => {
+    fileInput.accept = platformSelect.selectedOptions[0].dataset.extensions;
+  };
+  platformSelect.addEventListener("change", updateAcceptedFormats);
+  updateAcceptedFormats();
+})();
+</script>
 
 <!-- BAR STATUS REALTIME SERVER & GATEWAY -->
 <div class="server-bar">

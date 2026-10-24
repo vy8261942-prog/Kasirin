@@ -53,8 +53,7 @@ def test_home_download_page_lists_operating_systems(admin_client):
         "OS lainnya",
     ):
         assert operating_system in response.text
-    assert "Windows 10 dan Windows 11" in response.text
-    assert 'href="/download/installer"' in response.text
+    assert 'data-os="windows"' in response.text
 
 
 def test_floating_chatbot_is_available_on_shared_pages(admin_client):
@@ -194,17 +193,49 @@ def test_admin_upload_and_download_installer(admin_client, tmp_path):
 
     response = admin_client.post(
         "/admin/upload-installer",
+        data={"platform": "windows"},
         files={"installer": ("Kasirin.exe", b"fake-exe-content", "application/octet-stream")},
     )
     assert response.status_code == 303, response.text
     assert "notice=" in response.headers["location"]
-    assert installer_path.is_file()
-    assert installer_path.read_bytes() == b"fake-exe-content"
+    uploaded_path = installer_path.parent / "platform-installers" / "windows.exe"
+    assert uploaded_path.is_file()
+    assert uploaded_path.read_bytes() == b"fake-exe-content"
 
     download = admin_client.get("/download/installer")
     assert download.status_code == 200, download.text
     assert download.content == b"fake-exe-content"
-    assert download.headers["content-disposition"].endswith('Kasirin.exe"')
+    assert download.headers["content-disposition"].endswith('windows.exe"')
+
+    platform_download = admin_client.get("/download/installer/windows")
+    assert platform_download.status_code == 200
+    assert platform_download.content == b"fake-exe-content"
+
+
+def test_admin_upload_syncs_platform_availability(admin_client, tmp_path):
+    _login_admin(admin_client)
+    admin_client.app.state.settings.installer_path = (
+        tmp_path / "build" / "installer_v3" / "Kasirin.exe"
+    )
+
+    upload = admin_client.post(
+        "/admin/upload-installer",
+        data={"platform": "android"},
+        files={"installer": ("Kasirin.apk", b"fake-apk", "application/octet-stream")},
+    )
+    assert upload.status_code == 303
+
+    dashboard = admin_client.get("/admin")
+    assert "Android" in dashboard.text
+    assert "android.apk" in dashboard.text
+
+    download_page = admin_client.get("/download")
+    assert 'data-os="android"' in download_page.text
+    assert 'data-available="true"' in download_page.text.split('data-os="android"', 1)[1].split(">", 1)[0]
+
+    download = admin_client.get("/download/installer/android")
+    assert download.status_code == 200
+    assert download.content == b"fake-apk"
 
 
 def test_admin_create_and_delete_customer(admin_client):

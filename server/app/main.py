@@ -27,6 +27,50 @@ from server.app.services.payment_service import (
 
 TEMPLATES_DIR = Path(__file__).resolve().parent / "templates"
 templates = Jinja2Templates(directory=TEMPLATES_DIR)
+INSTALLER_PLATFORMS = (
+    {
+        "id": "windows",
+        "label": "Windows",
+        "detail": "Windows 10 dan Windows 11",
+        "extensions": (".exe", ".msi"),
+    },
+    {
+        "id": "macos",
+        "label": "macOS",
+        "detail": "MacBook dan iMac",
+        "extensions": (".dmg", ".pkg"),
+    },
+    {
+        "id": "linux",
+        "label": "Linux",
+        "detail": "Ubuntu, Debian, Fedora, dan Arch",
+        "extensions": (".appimage", ".deb", ".rpm", ".tar.gz"),
+    },
+    {
+        "id": "android",
+        "label": "Android",
+        "detail": "Ponsel dan tablet Android",
+        "extensions": (".apk",),
+    },
+    {
+        "id": "ios",
+        "label": "iOS / iPadOS",
+        "detail": "iPhone dan iPad",
+        "extensions": (".ipa",),
+    },
+    {
+        "id": "chromeos",
+        "label": "ChromeOS",
+        "detail": "Chromebook",
+        "extensions": (".apk", ".deb"),
+    },
+    {
+        "id": "other",
+        "label": "OS lainnya",
+        "detail": "BSD dan sistem operasi lain",
+        "extensions": (".zip", ".tar.gz"),
+    },
+)
 
 
 def _warn_midtrans_key_config(app_settings: Settings) -> None:
@@ -48,6 +92,46 @@ def _warn_midtrans_key_config(app_settings: Settings) -> None:
 def create_app(settings: Settings | None = None) -> FastAPI:
     app_settings = settings or default_settings
     session_factory = make_session_factory(app_settings)
+    platforms_by_id = {
+        platform["id"]: platform for platform in INSTALLER_PLATFORMS
+    }
+
+    def installer_storage_path() -> Path:
+        return app_settings.resolved_installer_path.parent / "platform-installers"
+
+    def installer_path_for(platform_id: str) -> Path | None:
+        platform = platforms_by_id.get(platform_id)
+        if platform is None:
+            return None
+        storage_dir = installer_storage_path()
+        for extension in platform["extensions"]:
+            candidate = storage_dir / f"{platform_id}{extension}"
+            if candidate.is_file():
+                return candidate
+        if platform_id == "windows":
+            legacy_path = app_settings.resolved_installer_path
+            if legacy_path.is_file():
+                return legacy_path
+        return None
+
+    def installer_catalog() -> list[dict]:
+        catalog = []
+        for platform in INSTALLER_PLATFORMS:
+            installer_path = installer_path_for(platform["id"])
+            catalog.append(
+                {
+                    **platform,
+                    "formats": ", ".join(platform["extensions"]),
+                    "available": installer_path is not None,
+                    "filename": installer_path.name if installer_path else None,
+                    "download_url": (
+                        f"/download/installer/{platform['id']}"
+                        if installer_path
+                        else ""
+                    ),
+                }
+            )
+        return catalog
 
     @asynccontextmanager
     async def lifespan(_: FastAPI):
@@ -150,7 +234,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         return templates.TemplateResponse(
             request,
             "download.html",
-            {"customer": customer},
+            {"customer": customer, "platforms": installer_catalog()},
         )
 
     @app.get("/register", response_class=HTMLResponse)
@@ -495,23 +579,74 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     @app.post("/admin/upload-installer")
     async def admin_upload_installer(
+        platform: str = Form(...),
         installer: UploadFile = File(...),
         admin: Customer = Depends(get_admin),
     ):
+        platform_config = platforms_by_id.get(platform)
+        if platform_config is None:
+            return RedirectResponse(
+                "/admin?error=Platform OS tidak dikenal.", status_code=303
+            )
         if not installer.filename:
             return RedirectResponse(
                 "/admin?error=File installer tidak valid.", status_code=303
             )
 
-        target_path = app_settings.resolved_installer_path
-        target_path.parent.mkdir(parents=True, exist_ok=True)
-        contents = await installer.read()
-        target_path.write_bytes(contents)
-        app_settings.installer_path = target_path
-        app.state.settings.installer_path = target_path
+        filename = Path(installer.filename).name
+        extension = next(
+            (
+                item
+                for item in sorted(
+                    platform_config["extensions"], key=len, reverse=True
+                )
+                if filename.lower().endswith(item)
+            ),
+            None,
+        )
+        if extension is None:
+            formats = ", ".join(platform_config["extensions"])
+            return RedirectResponse(
+                "/admin?error="
+                + quote(
+                    f"Format file {platform_config['label']} harus {formats}.",
+                    safe="",
+                ),
+                status_code=303,
+            )
+
+        storage_dir = installer_storage_path()
+        storage_dir.mkdir(parents=True, exist_ok=True)
+        target_path = storage_dir / f"{platform}{extension}"
+        temporary_path = target_path.with_name(f".{target_path.name}.upload")
+        try:
+            with temporary_path.open("wb") as output_file:
+                while chunk := await installer.read(1024 * 1024):
+                    output_file.write(chunk)
+            if temporary_path.stat().st_size == 0:
+                temporary_path.unlink(missing_ok=True)
+                return RedirectResponse(
+                    "/admin?error=File installer kosong.", status_code=303
+                )
+            temporary_path.replace(target_path)
+            for old_extension in platform_config["extensions"]:
+                old_path = storage_dir / f"{platform}{old_extension}"
+                if old_path != target_path:
+                    old_path.unlink(missing_ok=True)
+        except OSError as exc:
+            temporary_path.unlink(missing_ok=True)
+            raise HTTPException(
+                status_code=500, detail="Installer gagal disimpan."
+            ) from exc
+        finally:
+            await installer.close()
 
         return RedirectResponse(
-            "/admin?notice=Installer berhasil diunggah: " + installer.filename,
+            "/admin?notice="
+            + quote(
+                f"Installer {platform_config['label']} berhasil diperbarui.",
+                safe="",
+            ),
             status_code=303,
         )
 
@@ -607,6 +742,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                 "total_devices_count": len(all_devices),
                 "revenue_idr": revenue_idr,
                 "server_info": server_info,
+                "installer_platforms": INSTALLER_PLATFORMS,
+                "installers": installer_catalog(),
                 "notice": request.query_params.get("notice"),
                 "error": request.query_params.get("error"),
             },
@@ -852,10 +989,17 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     @app.get("/download/installer")
     def download_installer():
-        installer = app_settings.resolved_installer_path
-        if not installer.is_file():
+        return download_platform_installer("windows")
+
+    @app.get("/download/installer/{platform_id}")
+    def download_platform_installer(platform_id: str):
+        if platform_id not in platforms_by_id:
+            raise HTTPException(status_code=404, detail="Platform OS tidak dikenal.")
+        installer = installer_path_for(platform_id)
+        if installer is None:
             raise HTTPException(
-                status_code=404, detail="File instalator belum tersedia."
+                status_code=404,
+                detail=f"Installer {platforms_by_id[platform_id]['label']} belum tersedia.",
             )
         return FileResponse(
             installer,
