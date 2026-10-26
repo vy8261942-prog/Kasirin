@@ -47,6 +47,19 @@ node_modules/
 e2e_shots/
 e2e_videos/
 
+# Flutter/Dart generated files and local Android/iOS configuration
+android/kasirin_mobile/.dart_tool/
+android/kasirin_mobile/.flutter-plugins
+android/kasirin_mobile/.flutter-plugins-dependencies
+android/kasirin_mobile/android/local.properties
+android/kasirin_mobile/android/.gradle/
+android/kasirin_mobile/android/key.properties
+android/kasirin_mobile/ios/Pods/
+android/kasirin_mobile/ios/.symlinks/
+android/kasirin_mobile/ios/Flutter/ephemeral/
+android/kasirin_mobile/ios/Flutter/Generated.xcconfig
+android/kasirin_mobile/ios/Flutter/flutter_export_environment.sh
+
 # Log proses lokal (build PyInstaller, uvicorn server billing)
 *.log
 

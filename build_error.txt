@@ -1,0 +1,183 @@
+﻿Resolving dependencies...
+Downloading packages...
+  _fe_analyzer_shared 96.0.0 (110.0.0 available)
+  analyzer 10.2.0 (14.6.0 available)
+  build 4.0.7 (5.0.0 available)
+  build_config 1.3.3 (1.4.0 available)
+  build_runner 2.15.1 (2.17.1 available)
+  cli_util 0.4.2 (0.6.0 available)
+  code_assets 1.2.1 (2.1.0 available)
+  dart_style 3.1.7 (3.1.14 available)
+  drift 2.31.0 (2.35.3 available)
+  drift_dev 2.31.0 (2.35.2 available)
+  hooks 2.0.2 (2.2.0 available)
+  material_color_utilities 0.13.0 (0.13.1 available)
+  meta 1.18.3 (1.19.0 available)
+  objective_c 9.5.0 (9.6.2 available)
+  package_config 2.2.0 (3.0.0 available)
+  record_use 0.6.0 (1.1.1 available)
+  source_gen 4.2.4 (4.3.1 available)
+  sqlite3 2.9.4 (3.8.0 available)
+  sqlparser 0.43.1 (0.45.1 available)
+  test_api 0.7.12 (0.7.15 available)
+  vector_math 2.4.0 (2.4.3 available)
+Got dependencies!
+21 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+Running Gradle task 'assembleDebug'...                          
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>if "Windows_NT" == "Windows_NT" setlocal
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>set DEFAULT_JVM_OPTS= 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>set DIRNAME=C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android\ 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>if "C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android\" == "" set DIRNAME=. 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>set APP_BASE_NAME=gradlew 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>set APP_HOME=C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android\ 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>if defined JAVA_HOME goto findJavaFromJavaHome 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>set JAVA_HOME=C:\Program Files\Android\Android Studio\jbr 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>set JAVA_EXE=C:\Program Files\Android\Android Studio\jbr/bin/java.exe 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>if exist "C:\Program Files\Android\Android Studio\jbr/bin/java.exe" goto init 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>if not "Windows_NT" == "Windows_NT" goto win9xME_args 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>if "@eval[2+2]" == "4" goto 4NT_args 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>set CMD_LINE_ARGS= 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>set _SKIP=2 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>if "x-q" == "x" goto execute 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>set CMD_LINE_ARGS=-q -Ptarget-platform=android-arm,android-arm64,android-x64 -Ptarget=lib\main.dart -Pbase-application-name=android.app.Application -Pdart-defines=RkxVVFRFUl9CVUlMRF9OQU1FPTAuMS4w,RkxVVFRFUl9CVUlMRF9OVU1CRVI9MQ==,RkxVVFRFUl9WRVJTSU9OPTMuNDcuOA==,RkxVVFRFUl9DSEFOTkVMPXN0YWJsZQ==,RkxVVFRFUl9HSVRfVVJMPWh0dHBzOi8vZ2l0aHViLmNvbS9mbHV0dGVyL2ZsdXR0ZXIuZ2l0,RkxVVFRFUl9GUkFNRVdPUktfUkVWSVNJT049NzM3YmE4Zjg4NQ==,RkxVVFRFUl9FTkdJTkVfUkVWSVNJT049Y2Y2MzZiMWRmYg==,RkxVVFRFUl9EQVJUX1ZFUlNJT049My4xMy43 -Pdart-obfuscation=false -Ptrack-widget-creation=true -Ptree-shake-icons=false "-Pflutter.androidSdkRoot=C:\Users\ANJAY SOLUTION\AppData\Local\Android\sdk" -Pflutter.installedNdkVersions=28.2.13676358 assembleDebug 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>goto execute 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>set CLASSPATH=C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android\\gradle\wrapper\gradle-wrapper.jar 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>"C:\Program Files\Android\Android Studio\jbr/bin/java.exe"    "-Dorg.gradle.appname=gradlew" -classpath "C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android\\gradle\wrapper\gradle-wrapper.jar" org.gradle.wrapper.GradleWrapperMain -q -Ptarget-platform=android-arm,android-arm64,android-x64 -Ptarget=lib\main.dart -Pbase-application-name=android.app.Application -Pdart-defines=RkxVVFRFUl9CVUlMRF9OQU1FPTAuMS4w,RkxVVFRFUl9CVUlMRF9OVU1CRVI9MQ==,RkxVVFRFUl9WRVJTSU9OPTMuNDcuOA==,RkxVVFRFUl9DSEFOTkVMPXN0YWJsZQ==,RkxVVFRFUl9HSVRfVVJMPWh0dHBzOi8vZ2l0aHViLmNvbS9mbHV0dGVyL2ZsdXR0ZXIuZ2l0,RkxVVFRFUl9GUkFNRVdPUktfUkVWSVNJT049NzM3YmE4Zjg4NQ==,RkxVVFRFUl9FTkdJTkVfUkVWSVNJT049Y2Y2MzZiMWRmYg==,RkxVVFRFUl9EQVJUX1ZFUlNJT049My4xMy43 -Pdart-obfuscation=false -Ptrack-widget-creation=true -Ptree-shake-icons=false "-Pflutter.androidSdkRoot=C:\Users\ANJAY SOLUTION\AppData\Local\Android\sdk" -Pflutter.installedNdkVersions=28.2.13676358 assembleDebug 
+flutter.bat : WARNING: A restricted method in java.lang.System has been called
+At line:1 char:78
++ ... n_mobile' ; & 'C:\src\flutter\bin\flutter.bat' build apk --debug 2>&1 ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (WARNING: A rest...has been called:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+WARNING: java.lang.System::load has been called by net.rubygrapefruit.platform.internal.NativeLibraryLoader in an 
+unnamed module (file:/C:/Users/ANJAY%20SOLUTION/.gradle/wrapper/dists/gradle-9.3.1-all/9ot9r568e8zfvvd4mn8rbu1j0/gradle
+-9.3.1/lib/native-platform-0.22-milestone-29.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+Bad state: Generating kernel failed!
+
+Building native assets for package:objective_c failed.
+Compilation of hook returned with exit code: 1.
+To reproduce run:
+C:\src\flutter\bin\cache\dart-sdk\bin\dart compile kernel '--packages=C:\Users\ANJAY 
+SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\.dart_tool\package_config.json' '--output=C:\Users\ANJAY 
+SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\.dart_tool\hooks_runner\objective_c\d5eb128369\hook.dill' 
+'--depfile=C:\Users\ANJAY 
+SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\.dart_tool\hooks_runner\objective_c\d5eb128369\hook.dill.d' 
+'C:\Users\ANJAY SOLUTION\AppData\Local\Pub\Cache\hosted\pub.dev\objective_c-9.5.0\hook\build.dart'
+stderr:
+Bad state: Generating kernel failed!
+
+stdout:
+Compiling C:\Users\ANJAY SOLUTION\AppData\Local\Pub\Cache\hosted\pub.dev\objective_c-9.5.0\hook\build.dart to kernel 
+file C:\Users\ANJAY 
+SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\.dart_tool\hooks_runner\objective_c\d5eb128369\hook.dill.
+
+
+The message received from the daemon indicates that the daemon has disappeared.
+Build request sent: Build{id=1d6ed375-6a0a-44de-b6af-2e90d92ce5b0, currentDir=C:\Users\ANJAY 
+SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android}
+Attempting to read last messages from the daemon log...
+Daemon pid: 14712
+  log file: C:\Users\ANJAY SOLUTION\.gradle\daemon\9.3.1\daemon-14712.out.log
+----- Last 20 lines from daemon log file - daemon-14712.out.log -----
+2026-10-25T22:12:51.428+0700 [DEBUG] [org.gradle.launcher.daemon.server.SynchronizedDispatchConnection] thread 31: 
+dispatching org.gradle.launcher.daemon.protocol.BuildStarted@53dff8e2
+2026-10-25T22:12:51.448+0700 [DEBUG] [org.gradle.launcher.daemon.server.exec.EstablishBuildEnvironment] Configuring 
+env variables: [PATH, NO_PROXY, POWERSHELL_EXECUTABLE, SESSIONNAME, ALLUSERSPROFILE, VSCODE_PID, PROGRAMFILES, 
+PSMODULEPATH, NODEFAULTCURRENTDIRECTORYINEXEPATH, DIRNAME, USERNAME, CMD_LINE_ARGS, VSCODE_NLS_CONFIG, 
+EXIT_WITH_ERRORLEVEL, FPS_BROWSER_USER_PROFILE_STRING, KILO_DISABLE_CLAUDE_CODE, PATHEXT, KILO_APP_NAME, 
+SNAPSHOT_PATH, HOMEPATH, PROCESSOR_IDENTIFIER, PUBLIC, CACHE_DIR, KILO_ENABLE_QUESTION_TOOL, _SKIP, KILO, 
+FPS_BROWSER_APP_PROFILE_STRING, JAVA_HOME, FLUTTER_TOOLS_DIR, PROMPT, PROGRAMFILES(X86), AGENT, =C:, APPDATA, 
+JAVA_EXE, KILO_PID, KILO_EDITOR_NAME, DART, VSCODE_CWD, COMPUTERNAME, VSCODE_ESM_ENTRYPOINT, 
+VSCODE_NODE_COMPILE_CACHE_KIND, KILO_TELEMETRY_LEVEL, NODE_USE_SYSTEM_CA, APP_BASE_NAME, KILO_PARENT_PID, 
+FLUTTER_ALREADY_LOCKED, HOMEDRIVE, KILO_EXPERIMENTAL_CLAUDE_MIGRATION, NUMBER_OF_PROCESSORS, 
+KILO_EXPERIMENTAL_DISABLE_FILEWATCHER, VSCODE_IPC_HOOK, USERDOMAIN_ROAMINGPROFILE, PROCESSOR_LEVEL, SYSTEMDRIVE, 
+KILOCODE_EDITOR_NAME, PROCESSOR_ARCHITECTURE, DRIVERDATA, KILO_TREE_SITTER_WASM_DIR, KILO_MACHINE_ID, PROGRAMDATA, 
+CHROME_CRASHPAD_PIPE_NAME, ONEDRIVE, APP_HOME, MINGIT_PATH, KILO_APP_VERSION, VSCODE_CRASH_REPORTER_PROCESS_TYPE, 
+DASH__TOOL, KILOCODE_VERSION, SHARED_BIN, OPENCODE, VSCODE_CODE_CACHE_PATH, WINDIR, VSCODE_NODE_COMPILE_CACHE_ROOT, 
+KILO_CLIENT, DASH__SUPPRESS_ANALYTICS, LOCALAPPDATA, COMMONPROGRAMFILES(X86), VSCODE_L10N_BUNDLE_LOCATION, 
+COPILOT_OTEL_FILE_EXPORTER_PATH, KILO_PROCESS_ROLE, USERDOMAIN, VSCODE_HANDLES_UNCAUGHT_ERRORS, DART_SDK_PATH, 
+LOGONSERVER, FLUTTER_ROOT, ELECTRON_RUN_AS_NODE, MIMALLOC_PURGE_DELAY, KILO_DISABLE_CHANNEL_DB, PROGRAMW6432, 
+SYSTEMROOT, APPLICATION_INSIGHTS_NO_STATSBEAT, KILO_RUN_ID, OS, COMMONPROGRAMW6432, COMMONPROGRAMFILES, COMSPEC, 
+PROCESSOR_REVISION, CLASSPATH, DEBUG, KILOCODE_FEATURE, KILO_PLATFORM, TEMP, KILO_VSCODE_VERSION, USERPROFILE, TMP]
+2026-10-25T22:12:51.481+0700 [DEBUG] [org.gradle.launcher.daemon.server.exec.LogToClient] About to start relaying all 
+logs to the client via the connection.
+2026-10-25T22:12:51.482+0700 [INFO] [org.gradle.launcher.daemon.server.exec.LogToClient] The client will now receive 
+all logging from the daemon (pid: 14712). The daemon log file: C:\Users\ANJAY 
+SOLUTION\.gradle\daemon\9.3.1\daemon-14712.out.log
+2026-10-25T22:12:51.616+0700 [INFO] [org.gradle.launcher.daemon.server.exec.LogAndCheckHealth] Starting build in new 
+daemon [memory: 8 GiB]
+2026-10-25T22:12:51.676+0700 [DEBUG] [org.gradle.launcher.daemon.server.exec.ExecuteBuild] The daemon has started 
+executing the build.
+2026-10-25T22:12:51.677+0700 [DEBUG] [org.gradle.launcher.daemon.server.exec.ExecuteBuild] Executing build with daemon 
+context: DefaultDaemonContext[uid=ca62ecac-8df0-4168-887e-ffc1eb2744f7,javaHome=C:\Program Files\Android\Android 
+Studio\jbr,javaVersion=25,javaVendor=JetBrains s.r.o.,daemonRegistryDir=C:\Users\ANJAY SOLUTION\.gradle\daemon,pid=1471
+2,idleTimeout=10800000,priority=NORMAL,applyInstrumentationAgent=true,nativeServicesMode=ENABLED,daemonOpts=-XX:MaxMeta
+spaceSize=4G,-XX:ReservedCodeCacheSize=1G,-XX:+HeapDumpOnOutOfMemoryError,-Xmx8G,-Dfile.encoding=UTF-8,-Duser.country=I
+D,-Duser.language=en,-Duser.variant]
+Bad state: Generating kernel failed!
+
+Building native assets for package:objective_c failed.
+Compilation of hook returned with exit code: 1.
+To reproduce run:
+C:\src\flutter\bin\cache\dart-sdk\bin\dart compile kernel '--packages=C:\Users\ANJAY 
+SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\.dart_tool\package_config.json' '--output=C:\Users\ANJAY 
+SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\.dart_tool\hooks_runner\objective_c\d5eb128369\hook.dill' 
+'--depfile=C:\Users\ANJAY 
+SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\.dart_tool\hooks_runner\objective_c\d5eb128369\hook.dill.d' 
+'C:\Users\ANJAY SOLUTION\AppData\Local\Pub\Cache\hosted\pub.dev\objective_c-9.5.0\hook\build.dart'
+stderr:
+Bad state: Generating kernel failed!
+
+stdout:
+Compiling C:\Users\ANJAY SOLUTION\AppData\Local\Pub\Cache\hosted\pub.dev\objective_c-9.5.0\hook\build.dart to kernel 
+file C:\Users\ANJAY 
+SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\.dart_tool\hooks_runner\objective_c\d5eb128369\hook.dill.
+
+----- End of the daemon log -----
+
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Gradle build daemon disappeared unexpectedly (it may have been killed or may have crashed)
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+> Get more help at https://help.gradle.org.
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>if "1" == "0" goto mainEnd 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>rem Set variable GRADLE_EXIT_CONSOLE if you need the _script_ return code instead of 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>rem the _cmd.exe /c_ return code! 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>if not "" == "" exit 1 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>exit /b 1 
+Running Gradle task 'assembleDebug'...                            289.4s

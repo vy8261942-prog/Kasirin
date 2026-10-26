@@ -1,0 +1,89 @@
+Resolving dependencies...
+Downloading packages...
+  _fe_analyzer_shared 96.0.0 (110.0.0 available)
+  analyzer 10.2.0 (14.6.0 available)
+  build 4.0.7 (5.0.0 available)
+  build_config 1.3.3 (1.4.0 available)
+  build_runner 2.15.1 (2.17.1 available)
+  cli_util 0.4.2 (0.6.0 available)
+  code_assets 1.2.1 (2.1.0 available)
+  dart_style 3.1.7 (3.1.14 available)
+  drift 2.31.0 (2.35.3 available)
+  drift_dev 2.31.0 (2.35.2 available)
+  hooks 2.0.2 (2.2.0 available)
+  material_color_utilities 0.13.0 (0.13.1 available)
+  meta 1.18.3 (1.19.0 available)
+  objective_c 9.5.0 (9.6.2 available)
+  package_config 2.2.0 (3.0.0 available)
+  record_use 0.6.0 (1.1.1 available)
+  source_gen 4.2.4 (4.3.1 available)
+  sqlite3 2.9.4 (3.8.0 available)
+  sqlparser 0.43.1 (0.45.1 available)
+  test_api 0.7.12 (0.7.15 available)
+  vector_math 2.4.0 (2.4.3 available)
+Got dependencies!
+21 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+Running Gradle task 'assembleDebug'...                          
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>if "Windows_NT" == "Windows_NT" setlocal
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>set DEFAULT_JVM_OPTS= 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>set DIRNAME=C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android\ 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>if "C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android\" == "" set DIRNAME=. 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>set APP_BASE_NAME=gradlew 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>set APP_HOME=C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android\ 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>if defined JAVA_HOME goto findJavaFromJavaHome 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>set JAVA_HOME=C:\Program Files\Android\Android Studio\jbr 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>set JAVA_EXE=C:\Program Files\Android\Android Studio\jbr/bin/java.exe 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>if exist "C:\Program Files\Android\Android Studio\jbr/bin/java.exe" goto init 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>if not "Windows_NT" == "Windows_NT" goto win9xME_args 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>if "@eval[2+2]" == "4" goto 4NT_args 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>set CMD_LINE_ARGS= 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>set _SKIP=2 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>if "x-q" == "x" goto execute 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>set CMD_LINE_ARGS=-q -Ptarget-platform=android-arm,android-arm64,android-x64 -Ptarget=lib\main.dart -Pbase-application-name=android.app.Application -Pdart-defines=RkxVVFRFUl9CVUlMRF9OQU1FPTAuMS4w,RkxVVFRFUl9CVUlMRF9OVU1CRVI9MQ==,RkxVVFRFUl9WRVJTSU9OPTMuNDcuOA==,RkxVVFRFUl9DSEFOTkVMPXN0YWJsZQ==,RkxVVFRFUl9HSVRfVVJMPWh0dHBzOi8vZ2l0aHViLmNvbS9mbHV0dGVyL2ZsdXR0ZXIuZ2l0,RkxVVFRFUl9GUkFNRVdPUktfUkVWSVNJT049NzM3YmE4Zjg4NQ==,RkxVVFRFUl9FTkdJTkVfUkVWSVNJT049Y2Y2MzZiMWRmYg==,RkxVVFRFUl9EQVJUX1ZFUlNJT049My4xMy43 -Pdart-obfuscation=false -Ptrack-widget-creation=true -Ptree-shake-icons=false "-Pflutter.androidSdkRoot=C:\Users\ANJAY SOLUTION\AppData\Local\Android\sdk" -Pflutter.installedNdkVersions=28.2.13676358 assembleDebug 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>goto execute 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>set CLASSPATH=C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android\\gradle\wrapper\gradle-wrapper.jar 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>"C:\Program Files\Android\Android Studio\jbr/bin/java.exe"    "-Dorg.gradle.appname=gradlew" -classpath "C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android\\gradle\wrapper\gradle-wrapper.jar" org.gradle.wrapper.GradleWrapperMain -q -Ptarget-platform=android-arm,android-arm64,android-x64 -Ptarget=lib\main.dart -Pbase-application-name=android.app.Application -Pdart-defines=RkxVVFRFUl9CVUlMRF9OQU1FPTAuMS4w,RkxVVFRFUl9CVUlMRF9OVU1CRVI9MQ==,RkxVVFRFUl9WRVJTSU9OPTMuNDcuOA==,RkxVVFRFUl9DSEFOTkVMPXN0YWJsZQ==,RkxVVFRFUl9HSVRfVVJMPWh0dHBzOi8vZ2l0aHViLmNvbS9mbHV0dGVyL2ZsdXR0ZXIuZ2l0,RkxVVFRFUl9GUkFNRVdPUktfUkVWSVNJT049NzM3YmE4Zjg4NQ==,RkxVVFRFUl9FTkdJTkVfUkVWSVNJT049Y2Y2MzZiMWRmYg==,RkxVVFRFUl9EQVJUX1ZFUlNJT049My4xMy43 -Pdart-obfuscation=false -Ptrack-widget-creation=true -Ptree-shake-icons=false "-Pflutter.androidSdkRoot=C:\Users\ANJAY SOLUTION\AppData\Local\Android\sdk" -Pflutter.installedNdkVersions=28.2.13676358 assembleDebug 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>if "1" == "0" goto mainEnd 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>rem Set variable GRADLE_EXIT_CONSOLE if you need the _script_ return code instead of 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>rem the _cmd.exe /c_ return code! 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>if not "" == "" exit 1 
+
+C:\Users\ANJAY SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android>exit /b 1 
+Running Gradle task 'assembleDebug'...                            141.4s
+
+┌─ Flutter Fix ─────────────────────────────────────────────────────────────────────────────┐
+│ [!] Starting AGP 9+, only the new DSL interface will be read.                             │
+│ This results in a build failure when applying the Flutter Gradle plugin at C:\Users\ANJAY │
+│ SOLUTION\Desktop\kasir-pos-main\android\kasirin_mobile\android\app\build.gradle.kts.      │
+│                                                                                           │
+│ To resolve this update flutter or opt out of `android.newDsl`.                            │
+│ For instructions on how to opt out, see:                                                  │
+│ https://developer.android.com/build/releases/agp-9-0-0-release-notes                      │
+│                                                                                           │
+│ If you are not upgrading to AGP 9+, run `flutter analyze --suggestions` to check for      │
+│ incompatible dependencies.                                                                │
+└───────────────────────────────────────────────────────────────────────────────────────────┘
